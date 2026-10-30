@@ -7,9 +7,10 @@
 <link rel="icon" type="image/png" href="assets/icono.png">
 <link rel="apple-touch-icon" href="assets/icono-180.png">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://septiembre-catalogo.netlify.app/">
 <meta property="og:title" content="Septiembre · Catálogo">
 <meta property="og:description" content="Pastelería artesanal. Pedidos por DM de Instagram.">
-<meta property="og:image" content="assets/compartir.jpg">
+<meta property="og:image" content="https://septiembre-catalogo.netlify.app/assets/compartir.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,6 +197,28 @@ body { margin: 0;
 .cierre .firma { --c: var(--naranja); width: 170px; transform: rotate(-4deg); }
 .cierre .label { color: var(--crema); }
 .cierre .estrella { --c: var(--amarillo); width: 76px; flex: none; transform: rotate(-8deg); }
+
+/* ---------- botones de pedido ---------- */
+.botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+.boton {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 22px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--naranja);
+  transition: transform .15s ease;
+}
+.boton:hover { transform: translateY(-2px); }
+.boton:focus-visible { outline: 3px solid var(--crema); outline-offset: 3px; }
+.boton-ig { background: var(--naranja); color: var(--crema); }
+.boton-wa { background: var(--crema); color: var(--naranja); }
+.a-medida .botones { justify-content: flex-start; margin-top: 10px; }
+.a-medida .boton:focus-visible { outline-color: var(--naranja); }
+@media (prefers-reduced-motion: reduce) { .boton { transition: none; } }
 </style>
 </head>
 <body>
@@ -204,6 +227,10 @@ body { margin: 0;
     <img class="logo" src="assets/logo.png" alt="septiembre" width="760" height="652">
     <h1>Catálogo</h1>
     <p class="label">Pastelería artesanal</p>
+    <div class="botones">
+      <a class="boton boton-ig" href="https://www.instagram.com/septiembre_______/" target="_blank" rel="noopener">Pedí por Instagram</a>
+      <a class="boton boton-wa" href="https://wa.me/5491125822002?text=%C2%A1Hola!%20Vi%20el%20cat%C3%A1logo%20de%20Septiembre%20y%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedí por WhatsApp</a>
+    </div>
   </div>
 </header>
 
@@ -303,7 +330,11 @@ body { margin: 0;
         <div class="estrella" aria-hidden="true"></div>
         <p class="label">Pedidos a medida</p>
         <h2 id="t-medida">¿Buscás algo que <em>no está acá?</em></h2>
-        <p>Si nada del catálogo se ajusta a lo que tenés en mente, escribinos por mensaje directo y vemos juntos cómo armar algo a tu gusto.</p>
+        <p>Si nada del catálogo se ajusta a lo que tenés en mente, escribinos y vemos juntos cómo armar algo a tu gusto.</p>
+        <div class="botones">
+          <a class="boton boton-ig" href="https://www.instagram.com/septiembre_______/" target="_blank" rel="noopener">Pedí por Instagram</a>
+          <a class="boton boton-wa" href="https://wa.me/5491125822002?text=%C2%A1Hola!%20Vi%20el%20cat%C3%A1logo%20de%20Septiembre%20y%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedí por WhatsApp</a>
+        </div>
       </aside>
     </div>
   </div>
@@ -313,7 +344,7 @@ body { margin: 0;
   <div class="interior">
     <div class="cierre-texto">
       <div class="firma" role="img" aria-label="septiembre"></div>
-      <p class="label">Pedidos por DM</p>
+      <p class="label">Pedidos por Instagram y WhatsApp</p>
     </div>
     <div class="estrella" aria-hidden="true"></div>
   </div>

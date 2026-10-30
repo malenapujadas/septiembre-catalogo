@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Catálogo de Septiembre, pastelería artesanal. Pedidos por DM de Instagram.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<title>Septiembre Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@500;600&display=swap">
+<style>
+/* Layout: bandas de color como las placas. Rosa (logo) → crema (salado y bocaditos) → naranja (tortas, texto crema) → crema con recuadro amarillo (a medida) → rosa (firma). Cada banda alterna fondo y color de texto para jerarquizar sin salir de la paleta. Todo con la textura granulada del logo. */
+:root {
+  --crema: #FEEECD;
+  --amarillo: #FFE375;
+  --naranja: #F3741F;
+  --rosa: #F1ADC7;
+  --marron: #5A3320;
+  --font-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mano: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --font-label: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --tex-nube: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .22 -.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  --tex-grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0;
+ 
+  background: var(--crema);
+  color: var(--naranja);
+  font-family: var(--font-titulo);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.textura {
+  background-image: var(--tex-grano), var(--tex-nube);
+  background-size: 180px 180px, 600px 600px;
+}
+.banda {
+  position: relative;
+  overflow: hidden;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.interior { position: relative; max-width: 520px; margin: 0 auto; }
+.estrella {
+  background: var(--c, var(--amarillo));
+  -webkit-mask: url("assets/estrella.png") center / contain no-repeat;
+  mask: url("assets/estrella.png") center / contain no-repeat;
+  aspect-ratio: 700 / 589;
+}
+.firma {
+  background: var(--c, var(--naranja));
+  -webkit-mask: url("assets/letras.png") center / contain no-repeat;
+  mask: url("assets/letras.png") center / contain no-repeat;
+  aspect-ratio: 900 / 305;
+}
+.deco { position: absolute; pointer-events: none; }
+.label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------- portada (rosa) ---------- */
+.portada { background-color: var(--rosa); padding-block: 36px 40px; text-align: center; }
+.portada .interior { display: grid; justify-items: center; gap: 10px; }
+.logo { width: min(380px, 88%); height: auto; display: block; }
+.portada h1 {
+  margin: 0;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(46px, 12vw, 64px);
+  line-height: 1;
+  color: var(--crema);
+}
+.portada .label { color: var(--naranja); }
+
+/* ---------- secciones de lista ---------- */
+.seccion { display: grid; gap: 18px; }
+.seccion h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: var(--titulo);
+}
+.anotacion {
+  font-family: var(--font-mano);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--nota);
+  transform: rotate(-5deg);
+  display: inline-block;
+}
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.item { display: grid; gap: 2px; }
+.item-linea { display: flex; align-items: baseline; gap: 10px; }
+.item-nombre { font-weight: 400; font-size: 21px; min-width: 0; color: var(--nombre); }
+.cant { font-style: italic; font-weight: 300; white-space: nowrap; }
+.puntos {
+  flex: 1 1 24px;
+  min-width: 24px;
+  border-bottom: 2px dotted var(--puntos);
+  transform: translateY(-5px);
+}
+.precio {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--precio-txt);
+  background: var(--precio-bg);
+  padding: 3px 9px 2px;
+  border-radius: 999px;
+}
+.item-desc { font-style: italic; font-size: 17px; max-width: 38ch; color: var(--desc); }
+
+/* todo sobre crema: títulos rosa, productos naranja, precios naranja sobre resaltado amarillo */
+.crema {
+  background-color: var(--crema);
+  --titulo: var(--rosa); --nombre: var(--naranja); --desc: var(--marron);
+  --puntos: var(--rosa); --precio-bg: var(--amarillo); --precio-txt: var(--naranja); --nota: var(--naranja);
+}
+
+.bloque-crema { padding-block: 48px 60px; }
+.bloque-crema .interior { display: grid; gap: 50px; }
+.d1 { --c: var(--rosa); width: 300px; right: -170px; top: 60px; transform: rotate(18deg); }
+.d2 { --c: var(--amarillo); width: 44px; left: 6%; top: 18px; transform: rotate(-20deg); }
+.d3 { --c: var(--amarillo); width: 220px; left: -140px; top: 44%; transform: rotate(-12deg); }
+.d4 { --c: var(--rosa); width: 40px; right: 9%; top: 58%; transform: rotate(22deg); }
+.d5 { --c: var(--naranja); width: 26px; left: 10%; bottom: 25%; transform: rotate(10deg); }
+
+/* ---------- a medida ---------- */
+.a-medida {
+  position: relative;
+  background-color: var(--amarillo);
+  border-radius: 6px;
+  padding: 32px 24px 28px;
+  display: grid;
+  gap: 10px;
+}
+.a-medida .label { color: var(--naranja); }
+.a-medida h2 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 1.08;
+  text-wrap: balance;
+  max-width: 14em;
+  color: var(--naranja);
+}
+.a-medida h2 em { font-style: italic; }
+.a-medida p { margin: 0; max-width: 40ch; color: var(--naranja); }
+.a-medida .estrella {
+  --c: var(--rosa);
+  position: absolute;
+  width: 74px;
+  top: -32px;
+  right: 14px;
+  transform: rotate(14deg);
+}
+.a-medida .anotacion {
+  justify-self: end;
+  color: var(--naranja);
+  font-size: 26px;
+  margin-top: 4px;
+}
+
+/* ---------- cierre (rosa) ---------- */
+.cierre { background-color: var(--rosa); padding-block: 34px 40px; }
+.cierre .interior { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.cierre-texto { display: grid; gap: 12px; }
+.cierre .firma { --c: var(--naranja); width: 170px; transform: rotate(-4deg); }
+.cierre .label { color: var(--crema); }
+.cierre .estrella { --c: var(--amarillo); width: 76px; flex: none; transform: rotate(-8deg); }
+</style>
+</head>
+<body>
+<header class="portada banda textura">
+  <div class="interior">
+    <img class="logo" src="assets/logo.png" alt="septiembre" width="760" height="652">
+    <h1>Catálogo</h1>
+    <p class="label">Pastelería artesanal</p>
+  </div>
+</header>
+
+<main>
+  <div class="banda crema textura bloque-crema">
+    <div class="deco estrella d1" aria-hidden="true"></div>
+    <div class="deco estrella d2" aria-hidden="true"></div>
+    <div class="deco estrella d3" aria-hidden="true"></div>
+    <div class="deco estrella d4" aria-hidden="true"></div>
+    <div class="deco estrella d5" aria-hidden="true"></div>
+    <div class="interior">
+      <section class="seccion" aria-labelledby="t-salado">
+        <h2 id="t-salado">Salado</h2>
+        <ul class="lista">
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Scons de queso y ciboulette <span class="cant">x12</span></span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$25.000</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="seccion" aria-labelledby="t-bocaditos">
+        <h2 id="t-bocaditos">Bocaditos</h2>
+        <ul class="lista">
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Brownie</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$25.000</span>
+            </div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Lemonies</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$25.000</span>
+            </div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Cookies clásicas <span class="cant">x6</span></span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$20.000</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="seccion" aria-labelledby="t-tortas">
+        <h2 id="t-tortas">Tortas <span class="anotacion">20 cm</span></h2>
+        <ul class="lista">
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Marquise</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$45.000</span>
+            </div>
+            <div class="item-desc">con dulce de leche, crema y frutos rojos</div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Brownie</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$50.000</span>
+            </div>
+            <div class="item-desc">con dulce de leche, crema y frutos rojos</div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Key lime pie</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$50.000</span>
+            </div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Cheesecake de frutos rojos</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$52.000</span>
+            </div>
+          </li>
+          <li class="item">
+            <div class="item-linea">
+              <span class="item-nombre">Matilda</span>
+              <span class="puntos" aria-hidden="true"></span>
+              <span class="precio">$60.000</span>
+            </div>
+            <div class="item-desc">tres capas de bizcochuelo y dos de relleno de ganache de chocolate semiamargo</div>
+          </li>
+        </ul>
+      </section>
+
+      <aside class="a-medida textura" aria-labelledby="t-medida">
+        <div class="estrella" aria-hidden="true"></div>
+        <p class="label">Pedidos a medida</p>
+        <h2 id="t-medida">¿Buscás algo que <em>no está acá?</em></h2>
+        <p>Si nada del catálogo se ajusta a lo que tenés en mente, escribinos por mensaje directo y vemos juntos cómo armar algo a tu gusto.</p>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="cierre banda textura">
+  <div class="interior">
+    <div class="cierre-texto">
+      <div class="firma" role="img" aria-label="septiembre"></div>
+      <p class="label">Pedidos por DM</p>
+    </div>
+    <div class="estrella" aria-hidden="true"></div>
+  </div>
+</footer>
+
+</body>
+</html>
